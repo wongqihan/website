@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Log Cake Protocol - {{ name }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .embed-container {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 140px);
+            min-height: 700px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .embed-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .loading-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #166534 0%, #7f1d1d 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .cake-icon {
+            font-size: 4rem;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Snowfall effect */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            font-size: 1rem;
+            animation: fall linear infinite;
+            opacity: 0.7;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Snowfall -->
+    <div id="snowfall"></div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm relative z-10">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/" class="text-xl font-bold text-green-700">{{ name }}</a>
+            <a href="/" class="text-gray-600 hover:text-green-700 transition">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Portfolio
+            </a>
+        </div>
+    </nav>
+
+    <!-- Project Header -->
+    <header class="bg-gradient-to-r from-green-900 to-red-900 text-white relative z-10">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span
+                            class="bg-white/20 text-white text-xs px-3 py-1 rounded-full uppercase font-bold tracking-wide">
+                            🎄 Holiday Special
+                        </span>
+                        <span class="text-gray-300 text-sm">Vision AI + Math</span>
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-extrabold mb-3">🪵 The Log Cake Protocol 🍰</h1>
+                    <p class="text-gray-200 max-w-2xl">
+                        "Preventing family feuds over the chocolate stump using Computer Vision and unnecessary
+                        engineering rigor."
+                        Analyzes the visual density of a Yule Log cake and calculates mathematically perfect cut lines
+                        to ensure every guest gets an equal <em>volume</em> of cake, regardless of shape.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4 md:mt-0">
+                    <span class="bg-green-600 text-white text-xs px-3 py-1.5 rounded-full">Streamlit</span>
+                    <span class="bg-purple-600 text-white text-xs px-3 py-1.5 rounded-full">Gemini 2.0 Flash</span>
+                    <span class="bg-blue-600 text-white text-xs px-3 py-1.5 rounded-full">NumPy</span>
+                    <span class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-full">PIL</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Embedded App -->
+    <main class="max-w-7xl mx-auto px-4 py-8 relative z-10">
+        <div class="embed-container bg-white">
+            <div class="loading-overlay" id="loadingOverlay">
+                <div class="cake-icon mb-4">🪵🍰</div>
+                <p class="text-white/80 text-sm">Initializing Protocol...</p>
+            </div>
+            <iframe src="https://log-cake-protocol.streamlit.app/?embed=true" id="appFrame"
+                allow="clipboard-write; camera" loading="lazy"
+                onload="document.getElementById('loadingOverlay').classList.add('hidden')">
+            </iframe>
+        </div>
+
+        <div class="mt-6 text-center">
+            <a href="https://log-cake-protocol.streamlit.app/" target="_blank"
+                class="inline-flex items-center text-gray-500 hover:text-green-700 transition text-sm">
+                <i class="fas fa-external-link-alt mr-2"></i>
+                Open in new tab for full experience
+            </a>
+        </div>
+    </main>
+
+    <script>
+        // Create snowfall effect
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            snowflake.style.fontSize = (Math.random() * 0.5 + 0.5) + 'rem';
+            document.getElementById('snowfall').appendChild(snowflake);
+
+            setTimeout(() => snowflake.remove(), 5000);
+        }
+
+        setInterval(createSnowflake, 200);
+    </script>
+
+</body>
+
+</html>

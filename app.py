@@ -42,6 +42,16 @@ def project_wrap_me_up():
     """Render the Wrap Me Up project page."""
     return render_template("project_wrap_me_up.html", name="Qi-Han Wong")
 
+@app.route("/project/hawkersense")
+def project_hawkersense():
+    """Render the HawkerSense project page."""
+    return render_template("project_hawkersense.html", name="Qi-Han Wong")
+
+@app.route("/project/log-cake-protocol")
+def project_log_cake_protocol():
+    """Render the Log Cake Protocol project page."""
+    return render_template("project_log_cake_protocol.html", name="Qi-Han Wong")
+
 @app.route("/api/run/instagram-agent", methods=["POST"])
 def run_instagram_agent():
     """
