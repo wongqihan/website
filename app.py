@@ -6,14 +6,13 @@ from dotenv import load_dotenv
 # Load env vars
 load_dotenv()
 
-# Import core functions
+# Import core functions (optional - only needed for Instagram agent demo)
+generate_adventure = None
+generate_images = None
 try:
     from instagram_agent.main import generate_adventure, generate_images
 except ImportError:
-    # Fallback if running from root
-    import sys
-    sys.path.append(os.path.abspath("."))
-    from instagram_agent.main import generate_adventure, generate_images
+    pass  # Instagram agent features will be disabled
 
 app = Flask(__name__)
 
@@ -51,6 +50,12 @@ def project_hawkersense():
 def project_log_cake_protocol():
     """Render the Log Cake Protocol project page."""
     return render_template("project_log_cake_protocol.html", name="Qi-Han Wong")
+
+@app.route("/project/workout-corrector")
+def project_workout_corrector():
+    """Render the AI Workout Form Corrector project page."""
+    return render_template("project_workout_corrector.html", name="Qi-Han Wong")
+
 
 @app.route("/api/run/instagram-agent", methods=["POST"])
 def run_instagram_agent():

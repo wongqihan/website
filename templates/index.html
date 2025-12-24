@@ -9,38 +9,117 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-indigo-50 text-gray-800 font-sans">
 
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/" class="text-xl font-bold text-blue-600">{{ name }}</a>
-            <div class="space-x-6">
-                <a href="#about" class="hover:text-blue-600">About</a>
-                <a href="#projects" class="hover:text-blue-600">Projects</a>
-                <a href="#contact" class="text-gray-600 hover:text-gray-900 font-medium">Contact</a>
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900" style="background-color: rgba(17, 24, 39, 0.95);">
+        <div class=" max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="text-xl font-bold text-white">AI/PM</a>
+            <div class="space-x-8">
+                <a href="#projects" class="text-gray-300 hover:text-white transition">Portfolio</a>
+                <a href="#about" class="text-gray-300 hover:text-white transition">About</a>
+                <a href="#contact" class="text-indigo-400 hover:text-indigo-300 font-medium transition">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="bg-white">
-        <div class="max-w-6xl mx-auto px-4 py-20 text-center">
-            <div class="mb-8">
-                <img src="{{ url_for('static', filename='images/headshot.png') }}" alt="{{ name }}"
-                    class="w-40 h-40 rounded-full mx-auto shadow-lg object-cover border-4 border-white">
+    <header class="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+        <!-- Circuit board pattern background -->
+        <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="circuit" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                        <path d="M10 10 L10 30 L30 30" stroke="#6366f1" stroke-width="0.5" fill="none" />
+                        <path d="M50 10 L50 50 L90 50" stroke="#6366f1" stroke-width="0.5" fill="none" />
+                        <path d="M10 70 L40 70 L40 90" stroke="#6366f1" stroke-width="0.5" fill="none" />
+                        <path d="M70 20 L70 40 L90 40" stroke="#8b5cf6" stroke-width="0.5" fill="none" />
+                        <path d="M60 60 L60 80 L80 80 L80 90" stroke="#8b5cf6" stroke-width="0.5" fill="none" />
+                        <circle cx="10" cy="10" r="2" fill="#6366f1" />
+                        <circle cx="30" cy="30" r="2" fill="#6366f1" />
+                        <circle cx="50" cy="10" r="2" fill="#6366f1" />
+                        <circle cx="90" cy="50" r="2" fill="#6366f1" />
+                        <circle cx="40" cy="90" r="2" fill="#8b5cf6" />
+                        <circle cx="70" cy="20" r="2" fill="#8b5cf6" />
+                        <circle cx="80" cy="90" r="2" fill="#8b5cf6" />
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#circuit)" />
+            </svg>
+        </div>
+
+        <!-- Gradient orbs -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-20 left-10 w-96 h-96 bg-indigo-600 rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-80 h-80 bg-purple-600 rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div class="relative max-w-6xl mx-auto px-6 pt-32 pb-20 min-h-screen flex items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+                <!-- Left: Content -->
+                <div class="text-left">
+
+                    <h1 class="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                        Architecting<br>
+                        <span
+                            class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Intelligent
+                            Products</span>
+                    </h1>
+
+                    <p class="text-xl text-gray-300 mb-8 max-w-lg leading-relaxed">
+                        I bridge the gap between cutting-edge AI research and scalable product solutions.
+                        Specializing in <span class="text-white font-medium">Generative AI</span>,
+                        <span class="text-white font-medium">Vision Models</span>, and
+                        <span class="text-white font-medium">Cloud Architecture</span>.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#projects"
+                            class="group inline-flex items-center px-8 py-4 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40">
+                            View My Work
+                            <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                        <a href="#contact"
+                            class="inline-flex items-center px-8 py-4 bg-gray-800/50 text-white rounded-xl font-semibold hover:bg-gray-700/50 transition-all border border-gray-600/50">
+                            Get in Touch
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Photo with glow effect -->
+                <div class="relative flex justify-center lg:justify-end">
+                    <div class="relative">
+                        <!-- Glow effect -->
+                        <div
+                            class="absolute -inset-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-3xl opacity-20 blur-2xl">
+                        </div>
+                        <!-- Glassmorphism frame -->
+                        <div class="relative bg-gray-800/40 backdrop-blur-sm p-3 rounded-3xl border border-gray-600/30">
+                            <img src="{{ url_for('static', filename='images/headshot.png') }}" alt="{{ name }}"
+                                class="w-72 h-72 lg:w-80 lg:h-80 rounded-2xl object-cover shadow-2xl">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h1 class="text-5xl font-extrabold text-gray-900 mb-6">AI/ML Builder</h1>
-            <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">I bridge the gap between cutting-edge AI research
-                and scalable product solutions. Webapp development with LLMs, Vision Models, and Cloud Architecture.</p>
-            <a href="#projects"
-                class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition">View My
-                Work</a>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-gray-400 hover:text-white transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </a>
         </div>
     </header>
 
     <!-- Skills Section -->
-    <section id="about" class="py-16 bg-gray-50">
+    <section id="about" class="py-16 bg-indigo-50">
         <div class="max-w-6xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Technical Expertise</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -68,217 +147,179 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-16 bg-white">
+    <section id="projects" class="py-16" style="background-color: #f8fafc;">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Featured Projects</h2>
+            <h2 class="text-3xl font-bold text-center mb-4">Featured Projects</h2>
+            <p class="text-gray-600 text-center mb-12">AI-powered applications bridging research and real-world impact
+            </p>
 
-            <!-- Project Card: Wrap Me Up -->
+            <!-- FEATURED PROJECT: Log Cake Protocol -->
             <div
-                class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col md:flex-row mb-12">
-                <div class="md:w-1/2 h-64 md:h-auto bg-gray-900 flex items-center justify-center overflow-hidden">
-                    <img src="{{ url_for('static', filename='images/wrap_me_up_logo.png') }}" alt="Wrap Me Up"
-                        class="w-full h-full object-cover">
-                </div>
-                <div class="md:w-1/2 p-10 flex flex-col justify-center">
-                    <div class="uppercase tracking-wide text-sm text-purple-600 font-bold mb-2">Life Analytics</div>
-                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Wrap Me Up</h3>
-                    <p class="text-gray-600 mb-6">"Spotify Wrapped" for your life. A quarterly life audit tool that
-                        aggregates data from your digital footprint (Calendar, Mail, Maps) to generate meaningful
-                        insights, mood trends, and a "Season Theme" using Gemini.</p>
-
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Next.js</span>
-                        <span class="bg-pink-100 text-pink-800 text-xs px-3 py-1 rounded-full">Gemini 2.0</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Maps API</span>
-                    </div>
-
-                    <a href="/project/wrap-me-up"
-                        class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition text-center">
-                        View Project <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project Card: Shiok Scout -->
-            <div
-                class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col md:flex-row-reverse mb-12">
-                <div class="md:w-1/2 h-64 md:h-auto bg-gray-900 flex items-center justify-center overflow-hidden">
-                    <img src="{{ url_for('static', filename='images/shiok_scout_banner.png') }}" alt="Shiok Scout"
-                        class="w-full h-full object-cover">
-                </div>
-                <div class="md:w-1/2 p-10 flex flex-col justify-center">
-                    <div class="uppercase tracking-wide text-sm text-teal-600 font-bold mb-2">Data Science + ML
-                    </div>
-                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Shiok Scout</h3>
-                    <p class="text-gray-600 mb-6">Algorithmically find undervalued restaurants in Singapore using
-                        residual analysis. Uses ML to predict expected ratings, then surfaces places that outperform
-                        their context—true hidden gems that traditional lists miss.</p>
-
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="bg-teal-100 text-teal-800 text-xs px-3 py-1 rounded-full">Streamlit</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">scikit-learn</span>
-                        <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Gemini API</span>
-                        <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">PyDeck</span>
-                    </div>
-
-                    <a href="/project/shiok-scout"
-                        class="inline-block bg-teal-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-teal-700 transition text-center"
-                        style="background-color: #0d9488 !important;">
-                        Explore the Map <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project Card: YouTube Vibe Matcher -->
-            <div
-                class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col md:flex-row mb-12">
-                <div class="md:w-1/2 h-64 md:h-auto bg-gray-900 flex items-center justify-center overflow-hidden">
-                    <img src="{{ url_for('static', filename='images/youtube_vibe_logo.jpg') }}"
-                        alt="YouTube Vibe Matcher" class="w-full h-full object-cover">
-                </div>
-                <div class="md:w-1/2 p-10 flex flex-col justify-center">
-                    <div class="uppercase tracking-wide text-sm text-red-600 font-bold mb-2">Multimodal AI</div>
-                    <h3 class="text-3xl font-bold text-gray-900 mb-4">YouTube Vibe Matcher</h3>
-                    <p class="text-gray-600 mb-6">Discover YouTubers with a similar vibe using Gemini 2.0 Flash
-                        multimodal analysis. Analyzes video thumbnails and titles to generate a "vibe match" score and
-                        radar chart visualization.</p>
-
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">Next.js</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">FastAPI</span>
-                        <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Gemini 2.0
-                            Flash</span>
-                    </div>
-
-                    <a href="/project/youtube-vibe"
-                        class="inline-block bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition text-center">
-                        View Project <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project Card: HawkerSense -->
-            <div
-                class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col md:flex-row-reverse mb-12">
-                <div class="md:w-1/2 h-64 md:h-auto bg-gray-900 flex items-center justify-center overflow-hidden">
-                    <img src="{{ url_for('static', filename='images/hawkersense_banner.png') }}" alt="HawkerSense"
-                        class="w-full h-full object-cover">
-                </div>
-                <div class="md:w-1/2 p-10 flex flex-col justify-center">
-                    <div class="uppercase tracking-wide text-sm text-orange-600 font-bold mb-2">Vision AI + Nutrition
-                    </div>
-                    <h3 class="text-3xl font-bold text-gray-900 mb-4">HawkerSense</h3>
-                    <p class="text-gray-600 mb-6">Teaching AI to 'see' hidden calories in Singapore hawker food. Uses
-                        Gemini's vision capabilities with localized "Singaporean Intuition" to detect oil sheen, gravy
-                        density, and hidden ingredients that standard calorie apps miss.</p>
-
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full">Streamlit</span>
-                        <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Gemini 2.0
-                            Flash</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Pydantic</span>
-                    </div>
-
-                    <a href="/project/hawkersense"
-                        class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition text-center">
-                        Try HawkerSense <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project Card: Log Cake Protocol -->
-            <div
-                class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col md:flex-row mb-12">
+                class="bg-gradient-to-br from-red-900 via-green-900 to-red-800 rounded-2xl overflow-hidden shadow-xl mb-12 relative">
                 <div
-                    class="md:w-1/2 h-64 md:h-auto bg-gradient-to-br from-red-900 via-green-900 to-red-800 flex items-center justify-center overflow-hidden">
-                    <div class="text-center text-white p-8">
-                        <div class="text-6xl mb-4">🪵🍰</div>
-                        <div class="text-2xl font-bold">The Log Cake Protocol</div>
-                        <div class="text-sm opacity-75 mt-2">Advanced Yule Log Geometry</div>
-                    </div>
+                    class="absolute top-4 left-4 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">
+                    🎄 Seasonal Special
                 </div>
-                <div class="md:w-1/2 p-10 flex flex-col justify-center">
-                    <div class="uppercase tracking-wide text-sm text-green-600 font-bold mb-2">Vision AI + Math</div>
-                    <h3 class="text-3xl font-bold text-gray-900 mb-4">The Log Cake Protocol</h3>
-                    <p class="text-gray-600 mb-6">Preventing family feuds over the chocolate stump using Computer
-                        Vision.
-                        Analyzes Yule log density with a 5-point profiling system and calculates mathematically fair
-                        cut lines so every guest gets equal volume—regardless of shape.</p>
-
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Streamlit</span>
-                        <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Gemini 2.0
-                            Flash</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">NumPy</span>
-                        <span class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">PIL</span>
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 h-72 md:h-80 flex items-center justify-center overflow-hidden">
+                        <img src="{{ url_for('static', filename='images/log_cake_featured.png') }}"
+                            alt="Log Cake Protocol" class="w-full h-full object-cover opacity-90">
                     </div>
-
-                    <a href="/project/log-cake-protocol"
-                        class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-800 transition text-center">
-                        Try the Protocol <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <div class="md:w-1/2 p-10 flex flex-col justify-center text-white">
+                        <div class="uppercase tracking-wide text-sm text-green-300 font-bold mb-2">Vision AI + Math
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4">The Log Cake Protocol</h3>
+                        <p class="text-gray-200 mb-6">Preventing family feuds over the chocolate stump using Computer
+                            Vision.
+                            Analyzes Yule log density with a 5-point profiling system and calculates mathematically fair
+                            cut lines so every guest gets equal volume.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full">Streamlit</span>
+                            <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full">Gemini 3.0 Flash</span>
+                            <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full">NumPy</span>
+                        </div>
+                        <a href="/project/log-cake-protocol"
+                            class="inline-block bg-white text-green-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition text-center w-fit">
+                            Try the Protocol <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Project Card: Instagram Agent -->
-            <div
-                class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col md:flex-row mb-12">
-                <div class="md:w-1/2 h-64 md:h-auto bg-gray-200 flex items-center justify-center overflow-hidden">
-                    <img src="{{ url_for('static', filename='images/bobo_stella_thumbnail.png') }}"
-                        alt="Bobo and Stella" class="w-full h-full object-cover">
-                </div>
-                <div class="md:w-1/2 p-10 flex flex-col justify-center">
-                    <div class="uppercase tracking-wide text-sm text-blue-600 font-bold mb-2">GenAI Pipeline</div>
-                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Autonomous Content Creator</h3>
-                    <p class="text-gray-600 mb-6">A fully automated agent that generates unique stories using Gemini,
-                        renders photorealistic images with Vertex AI Imagen, and publishes carousels to Instagram via
-                        Graph API.</p>
+            <!-- PROJECT GRID: 3x2 layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Python</span>
-                        <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Vertex AI</span>
-                        <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Instagram Graph
-                            API</span>
+                <!-- Card: Wrap Me Up -->
+                <a href="/project/wrap-me-up"
+                    class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-purple-200">
+                    <div class="h-48 overflow-hidden bg-gray-900">
+                        <img src="{{ url_for('static', filename='images/wrap_me_up_card.png') }}" alt="Wrap Me Up"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                     </div>
+                    <div class="p-5">
+                        <div class="uppercase tracking-wide text-xs text-purple-600 font-bold mb-1">Life Analytics</div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
+                            Wrap Me Up</h3>
+                        <p class="text-gray-600 text-sm line-clamp-2">"Spotify Wrapped" for your life—quarterly insights
+                            from your digital footprint.</p>
+                        <div class="flex flex-wrap gap-1 mt-3">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-0.5 rounded-full">Next.js</span>
+                            <span class="bg-pink-100 text-pink-800 text-xs px-2 py-0.5 rounded-full">Gemini</span>
+                        </div>
+                    </div>
+                </a>
 
-                    <a href="/project/instagram-agent"
-                        class="inline-block bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition text-center">
-                        View Technical Demo <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
+                <!-- Card: Shiok Scout -->
+                <a href="/project/shiok-scout"
+                    class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-teal-200">
+                    <div class="h-48 overflow-hidden bg-gray-900">
+                        <img src="{{ url_for('static', filename='images/shiok_scout_card.png') }}" alt="Shiok Scout"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <div class="uppercase tracking-wide text-xs text-teal-600 font-bold mb-1">Data Science + ML
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">
+                            Shiok Scout</h3>
+                        <p class="text-gray-600 text-sm line-clamp-2">Find undervalued Singapore restaurants using ML
+                            residual analysis.</p>
+                        <div class="flex flex-wrap gap-1 mt-3">
+                            <span class="bg-teal-100 text-teal-800 text-xs px-2 py-0.5 rounded-full">Streamlit</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full">scikit-learn</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card: YouTube Vibe Matcher -->
+                <a href="/project/youtube-vibe"
+                    class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-red-200">
+                    <div class="h-48 overflow-hidden bg-gray-900">
+                        <img src="{{ url_for('static', filename='images/youtube_vibe_logo.jpg') }}"
+                            alt="YouTube Vibe Matcher"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <div class="uppercase tracking-wide text-xs text-red-600 font-bold mb-1">Multimodal AI</div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
+                            YouTube Vibe Matcher</h3>
+                        <p class="text-gray-600 text-sm line-clamp-2">Discover similar YouTubers using multimodal
+                            thumbnail analysis.</p>
+                        <div class="flex flex-wrap gap-1 mt-3">
+                            <span class="bg-red-100 text-red-800 text-xs px-2 py-0.5 rounded-full">Next.js</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-0.5 rounded-full">Gemini
+                                2.0</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card: HawkerSense -->
+                <a href="/project/hawkersense"
+                    class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-orange-200">
+                    <div class="h-48 overflow-hidden bg-gray-900">
+                        <img src="{{ url_for('static', filename='images/hawkersense_card.png') }}" alt="HawkerSense"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <div class="uppercase tracking-wide text-xs text-orange-600 font-bold mb-1">Vision AI +
+                            Nutrition</div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">
+                            HawkerSense</h3>
+                        <p class="text-gray-600 text-sm line-clamp-2">Teaching AI to 'see' hidden calories in Singapore
+                            hawker food.</p>
+                        <div class="flex flex-wrap gap-1 mt-3">
+                            <span
+                                class="bg-orange-100 text-orange-800 text-xs px-2 py-0.5 rounded-full">Streamlit</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-0.5 rounded-full">Gemini
+                                Vision</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card: Instagram Agent -->
+                <a href="/project/instagram-agent"
+                    class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200">
+                    <div class="h-48 overflow-hidden bg-gray-200">
+                        <img src="{{ url_for('static', filename='images/bobo_stella_thumbnail.png') }}"
+                            alt="Bobo and Stella"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <div class="uppercase tracking-wide text-xs text-blue-600 font-bold mb-1">GenAI Pipeline</div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                            Autonomous Content Creator</h3>
+                        <p class="text-gray-600 text-sm line-clamp-2">Automated agent generating stories and publishing
+                            to Instagram.</p>
+                        <div class="flex flex-wrap gap-1 mt-3">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full">Vertex AI</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-0.5 rounded-full">Graph
+                                API</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card: AI Workout Form Corrector -->
+                <a href="/project/workout-corrector"
+                    class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl border border-gray-100 transition-all duration-300">
+                    <div class="h-48 overflow-hidden bg-gradient-to-br from-purple-600 to-blue-600 relative">
+                        <img src="{{ url_for('static', filename='images/workout_corrector_card.png') }}"
+                            alt="AI Workout Corrector"
+                            class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <div class="uppercase tracking-wide text-xs text-purple-600 font-bold mb-1">Computer Vision
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">AI Workout Form Corrector</h3>
+                        <p class="text-gray-600 text-sm line-clamp-2">Real-time exercise form analysis using MediaPipe
+                            Pose.</p>
+                        <div class="flex flex-wrap gap-1 mt-3">
+                            <span
+                                class="bg-purple-100 text-purple-800 text-xs px-2 py-0.5 rounded-full">MediaPipe</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full">OpenCV</span>
+                        </div>
+                    </div>
+                </a>
+
             </div>
-
-            <!-- Project Card: AI Workout Form Corrector -->
-            <div
-                class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col md:flex-row-reverse mb-12">
-                <div
-                    class="md:w-1/2 h-64 md:h-auto bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center overflow-hidden">
-                    <img src="{{ url_for('static', filename='images/workout_corrector_logo.png') }}"
-                        alt="AI Workout Corrector" class="w-full h-full object-cover">
-                </div>
-                <div class="md:w-1/2 p-10 flex flex-col justify-center">
-                    <div class="uppercase tracking-wide text-sm text-purple-600 font-bold mb-2">Computer Vision
-                    </div>
-                    <h3 class="text-3xl font-bold text-gray-900 mb-4">AI Workout Form Corrector</h3>
-                    <p class="text-gray-600 mb-6">Real-time exercise form analysis using MediaPipe Pose. Tracks squats
-                        and push-ups with live feedback on form, depth, and alignment. Counts reps automatically and
-                        provides instant corrections.</p>
-
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">MediaPipe</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">OpenCV</span>
-                        <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Streamlit</span>
-                    </div>
-
-                    <a href="#"
-                        class="inline-block bg-gray-400 text-white px-6 py-3 rounded-lg font-semibold cursor-not-allowed text-center">
-                        Demo Coming Soon <i class="fas fa-clock ml-2"></i>
-                    </a>
-                </div>
-            </div>
-
-
-
         </div>
     </section>
 
