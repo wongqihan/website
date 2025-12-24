@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }} - AI Product Manager Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/" class="text-xl font-bold text-blue-600">{{ name }}</a>
+            <div class="space-x-6">
+                <a href="#about" class="hover:text-blue-600">About</a>
+                <a href="#projects" class="hover:text-blue-600">Projects</a>
+                <a href="#contact" class="text-gray-600 hover:text-gray-900 font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-white">
+        <div class="max-w-6xl mx-auto px-4 py-20 text-center">
+            <div class="mb-8">
+                <img src="{{ url_for('static', filename='images/headshot.png') }}" alt="{{ name }}"
+                    class="w-40 h-40 rounded-full mx-auto shadow-lg object-cover border-4 border-white">
+            </div>
+            <h1 class="text-5xl font-extrabold text-gray-900 mb-6">AI/ML Builder</h1>
+            <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">I bridge the gap between cutting-edge AI research
+                and scalable product solutions. Webapp development with LLMs, Vision Models, and Cloud Architecture.</p>
+            <a href="#projects"
+                class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition">View My
+                Work</a>
+        </div>
+    </header>
+
+    <!-- Skills Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Technical Expertise</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Skill 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="text-blue-600 text-4xl mb-4"><i class="fas fa-brain"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Generative AI</h3>
+                    <p class="text-gray-600">Gemini 2.5/3.0, Vertex AI Imagen, Prompt Engineering, RAG Architectures.
+                    </p>
+                </div>
+                <!-- Skill 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="text-green-600 text-4xl mb-4"><i class="fas fa-cloud"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Cloud Infrastructure</h3>
+                    <p class="text-gray-600">Google Cloud Platform (GCP), Cloud Storage, Cloud Run, API Security.</p>
+                </div>
+                <!-- Skill 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="text-purple-600 text-4xl mb-4"><i class="fas fa-code"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Full-Stack Development</h3>
+                    <p class="text-gray-600">Python, Flask, REST APIs, Social Media Graph APIs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Featured Projects</h2>
+
+            <!-- Project Card: Wrap Me Up -->
+            <div
+                class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col md:flex-row mb-12">
+                <div class="md:w-1/2 h-64 md:h-auto bg-gray-900 flex items-center justify-center overflow-hidden">
+                    <img src="{{ url_for('static', filename='images/wrap_me_up_logo.png') }}" alt="Wrap Me Up"
+                        class="w-full h-full object-cover">
+                </div>
+                <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                    <div class="uppercase tracking-wide text-sm text-purple-600 font-bold mb-2">Life Analytics</div>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Wrap Me Up</h3>
+                    <p class="text-gray-600 mb-6">"Spotify Wrapped" for your life. A quarterly life audit tool that
+                        aggregates data from your digital footprint (Calendar, Mail, Maps) to generate meaningful
+                        insights, mood trends, and a "Season Theme" using Gemini.</p>
+
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Next.js</span>
+                        <span class="bg-pink-100 text-pink-800 text-xs px-3 py-1 rounded-full">Gemini 2.0</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Maps API</span>
+                    </div>
+
+                    <a href="/project/wrap-me-up"
+                        class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition text-center">
+                        View Project <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card: Shiok Scout -->
+            <div
+                class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col md:flex-row-reverse mb-12">
+                <div class="md:w-1/2 h-64 md:h-auto bg-gray-900 flex items-center justify-center overflow-hidden">
+                    <img src="{{ url_for('static', filename='images/shiok_scout_banner.png') }}" alt="Shiok Scout"
+                        class="w-full h-full object-cover">
+                </div>
+                <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                    <div class="uppercase tracking-wide text-sm text-teal-600 font-bold mb-2">Data Science + ML
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Shiok Scout</h3>
+                    <p class="text-gray-600 mb-6">Algorithmically find undervalued restaurants in Singapore using
+                        residual analysis. Uses ML to predict expected ratings, then surfaces places that outperform
+                        their context—true hidden gems that traditional lists miss.</p>
+
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="bg-teal-100 text-teal-800 text-xs px-3 py-1 rounded-full">Streamlit</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">scikit-learn</span>
+                        <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Gemini API</span>
+                        <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">PyDeck</span>
+                    </div>
+
+                    <a href="/project/shiok-scout"
+                        class="inline-block bg-teal-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-teal-700 transition text-center"
+                        style="background-color: #0d9488 !important;">
+                        Explore the Map <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card: YouTube Vibe Matcher -->
+            <div
+                class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col md:flex-row mb-12">
+                <div class="md:w-1/2 h-64 md:h-auto bg-gray-900 flex items-center justify-center overflow-hidden">
+                    <img src="{{ url_for('static', filename='images/youtube_vibe_logo.jpg') }}"
+                        alt="YouTube Vibe Matcher" class="w-full h-full object-cover">
+                </div>
+                <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                    <div class="uppercase tracking-wide text-sm text-red-600 font-bold mb-2">Multimodal AI</div>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-4">YouTube Vibe Matcher</h3>
+                    <p class="text-gray-600 mb-6">Discover YouTubers with a similar vibe using Gemini 2.0 Flash
+                        multimodal analysis. Analyzes video thumbnails and titles to generate a "vibe match" score and
+                        radar chart visualization.</p>
+
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">Next.js</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">FastAPI</span>
+                        <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Gemini 2.0
+                            Flash</span>
+                    </div>
+
+                    <a href="/project/youtube-vibe"
+                        class="inline-block bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition text-center">
+                        View Project <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card: Instagram Agent -->
+            <div
+                class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col md:flex-row mb-12">
+                <div class="md:w-1/2 h-64 md:h-auto bg-gray-200 flex items-center justify-center overflow-hidden">
+                    <img src="{{ url_for('static', filename='images/bobo_stella_thumbnail.png') }}"
+                        alt="Bobo and Stella" class="w-full h-full object-cover">
+                </div>
+                <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                    <div class="uppercase tracking-wide text-sm text-blue-600 font-bold mb-2">GenAI Pipeline</div>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Autonomous Content Creator</h3>
+                    <p class="text-gray-600 mb-6">A fully automated agent that generates unique stories using Gemini,
+                        renders photorealistic images with Vertex AI Imagen, and publishes carousels to Instagram via
+                        Graph API.</p>
+
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Python</span>
+                        <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Vertex AI</span>
+                        <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Instagram Graph
+                            API</span>
+                    </div>
+
+                    <a href="/project/instagram-agent"
+                        class="inline-block bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition text-center">
+                        View Technical Demo <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card: AI Workout Form Corrector -->
+            <div
+                class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col md:flex-row-reverse mb-12">
+                <div
+                    class="md:w-1/2 h-64 md:h-auto bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center overflow-hidden">
+                    <img src="{{ url_for('static', filename='images/workout_corrector_logo.png') }}"
+                        alt="AI Workout Corrector" class="w-full h-full object-cover">
+                </div>
+                <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                    <div class="uppercase tracking-wide text-sm text-purple-600 font-bold mb-2">Computer Vision
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-4">AI Workout Form Corrector</h3>
+                    <p class="text-gray-600 mb-6">Real-time exercise form analysis using MediaPipe Pose. Tracks squats
+                        and push-ups with live feedback on form, depth, and alignment. Counts reps automatically and
+                        provides instant corrections.</p>
+
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">MediaPipe</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">OpenCV</span>
+                        <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Streamlit</span>
+                    </div>
+
+                    <a href="#"
+                        class="inline-block bg-gray-400 text-white px-6 py-3 rounded-lg font-semibold cursor-not-allowed text-center">
+                        Demo Coming Soon <i class="fas fa-clock ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-6">Let's Build the Future</h2>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="https://www.linkedin.com/in/qi-han-wong-34955261/" target="_blank"
+                    class="hover:text-blue-400 transition">
+                    <i class="fab fa-linkedin text-3xl"></i>
+                </a>
+                <a href="mailto:wongqihan@gmail.com" class="hover:text-blue-400 transition">
+                    <i class="fas fa-envelope text-3xl"></i>
+                </a>
+                <a href="https://github.com" target="_blank" class="hover:text-blue-400 transition">
+                    <i class="fab fa-github text-3xl"></i>
+                </a>
+            </div>
+            <p class="text-gray-500">&copy; 2025 Qi-Han Wong. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

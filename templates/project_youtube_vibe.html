@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Vibe Matcher - {{ name }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .embed-container {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 140px);
+            min-height: 600px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .embed-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .loading-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .pulse-ring {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid rgba(239, 68, 68, 0.3);
+            animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        .tech-badge {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white font-sans">
+
+    <!-- Navigation -->
+    <nav class="bg-gray-800 border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/" class="text-xl font-bold text-red-500">{{ name }}</a>
+            <a href="/" class="text-gray-400 hover:text-white transition">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Portfolio
+            </a>
+        </div>
+    </nav>
+
+    <!-- Project Header -->
+    <header class="bg-gradient-to-r from-gray-800 to-gray-900 border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span
+                            class="bg-red-500/20 text-red-400 text-xs px-3 py-1 rounded-full uppercase font-bold tracking-wide">
+                            Live App
+                        </span>
+                        <span class="text-gray-500 text-sm">Multimodal AI</span>
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-extrabold mb-3">YouTube Vibe Matcher</h1>
+                    <p class="text-gray-400 max-w-2xl">
+                        Discover YouTubers with a similar vibe using Gemini 2.0 Flash multimodal analysis.
+                        Analyzes video thumbnails and titles to generate a "vibe match" score and radar chart
+                        visualization.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4 md:mt-0">
+                    <span class="tech-badge text-red-300 text-xs px-3 py-1.5 rounded-full">Next.js</span>
+                    <span class="tech-badge text-blue-300 text-xs px-3 py-1.5 rounded-full">FastAPI</span>
+                    <span class="tech-badge text-purple-300 text-xs px-3 py-1.5 rounded-full">Gemini 2.0 Flash</span>
+                    <span class="tech-badge text-green-300 text-xs px-3 py-1.5 rounded-full">Cloud Run</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Embedded App -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <div class="embed-container">
+            <div class="loading-overlay" id="loadingOverlay">
+                <div class="pulse-ring mb-6"></div>
+                <p class="text-gray-400 text-sm">Loading YouTube Vibe Matcher...</p>
+            </div>
+            <iframe src="https://youtube-vibe-frontend-542067362718.us-central1.run.app" id="appFrame"
+                allow="clipboard-write" loading="lazy"
+                onload="document.getElementById('loadingOverlay').classList.add('hidden')">
+            </iframe>
+        </div>
+
+        <div class="mt-6 text-center">
+            <a href="https://youtube-vibe-frontend-542067362718.us-central1.run.app" target="_blank"
+                class="inline-flex items-center text-gray-400 hover:text-white transition text-sm">
+                <i class="fas fa-external-link-alt mr-2"></i>
+                Open in new tab for full experience
+            </a>
+        </div>
+    </main>
+
+</body>
+
+</html>

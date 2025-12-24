@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiok Scout - {{ name }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .embed-container {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 140px);
+            min-height: 700px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .embed-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .loading-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #0d9488 0%, #065f5b 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .bowl-icon {
+            font-size: 4rem;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .tech-badge {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/" class="text-xl font-bold text-teal-600">{{ name }}</a>
+            <a href="/" class="text-gray-600 hover:text-teal-600 transition">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Portfolio
+            </a>
+        </div>
+    </nav>
+
+    <!-- Project Header -->
+    <header class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span
+                            class="bg-white/20 text-white text-xs px-3 py-1 rounded-full uppercase font-bold tracking-wide">
+                            Live App
+                        </span>
+                        <span class="text-gray-400 text-sm">Data Science + ML</span>
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-extrabold mb-3">Shiok Scout</h1>
+                    <p class="text-gray-300 max-w-2xl">
+                        Algorithmically find undervalued restaurants in Singapore using residual analysis.
+                        Uses ML to predict expected ratings, then surfaces places that outperform their context—true
+                        hidden gems that traditional lists miss.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4 md:mt-0">
+                    <span class="bg-teal-600 text-white text-xs px-3 py-1.5 rounded-full">Streamlit</span>
+                    <span class="bg-blue-600 text-white text-xs px-3 py-1.5 rounded-full">scikit-learn</span>
+                    <span class="bg-purple-600 text-white text-xs px-3 py-1.5 rounded-full">Gemini API</span>
+                    <span class="bg-amber-600 text-white text-xs px-3 py-1.5 rounded-full">PyDeck</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Embedded App -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <div class="embed-container bg-white">
+            <div class="loading-overlay" id="loadingOverlay">
+                <div class="bowl-icon mb-4">🍜</div>
+                <p class="text-white/80 text-sm">Loading Shiok Scout...</p>
+            </div>
+            <iframe src="https://shiok-scout-zrnbuvvvnj9mkb4udq35by.streamlit.app/?embed=true" id="appFrame"
+                allow="clipboard-write" loading="lazy"
+                onload="document.getElementById('loadingOverlay').classList.add('hidden')">
+            </iframe>
+        </div>
+
+        <div class="mt-6 text-center">
+            <a href="https://shiok-scout-zrnbuvvvnj9mkb4udq35by.streamlit.app/" target="_blank"
+                class="inline-flex items-center text-gray-500 hover:text-teal-600 transition text-sm">
+                <i class="fas fa-external-link-alt mr-2"></i>
+                Open in new tab for full experience
+            </a>
+        </div>
+    </main>
+
+</body>
+
+</html>
