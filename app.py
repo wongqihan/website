@@ -6,13 +6,9 @@ from dotenv import load_dotenv
 # Load env vars
 load_dotenv()
 
-# Import core functions (optional - only needed for Instagram agent demo)
+# Instagram agent import removed (files deleted in commit 9379884)
 generate_adventure = None
 generate_images = None
-try:
-    from instagram_agent.main import generate_adventure, generate_images
-except ImportError:
-    pass  # Instagram agent features will be disabled
 
 app = Flask(__name__)
 
