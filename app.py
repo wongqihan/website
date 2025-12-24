@@ -65,64 +65,10 @@ def run_instagram_agent():
     2. Generate Images (Imagen)
     3. Return data (DO NOT post to Instagram)
     """
-    try:
-        # 1. Generate Story
-        story = generate_adventure(dry_run=False)
-        
-        # 2. Generate Images
-        # generate_images returns (image_paths, video_path)
-        # We need to handle the fact that generate_images uploads to GCS in the original script?
-        # Actually, looking at main.py, generate_images returns local paths.
-        # But wait, the upload logic was in upload_carousel.
-        # We need to upload to GCS to get public URLs for the frontend to display?
-        # OR we can serve local files if running locally, but for production we need GCS.
-        
-        # Let's check main.py again. generate_images saves locally.
-        # We should modify/wrapper to upload to GCS and return URLs.
-        
-        image_paths, video_path = generate_images(story, dry_run=False)
-        
-        # Helper to upload to GCS and get URL (reusing logic from main.py)
-        public_urls = []
-        try:
-            from google.cloud import storage
-            import time
-            
-            project_id = os.getenv("GOOGLE_CLOUD_PROJECT")
-            if project_id:
-                storage_client = storage.Client(project=project_id)
-                bucket = storage_client.bucket("boboandstella-instagram")
-                
-                for img_path in image_paths:
-                    if not img_path or not os.path.exists(img_path):
-                        continue
-                        
-                    blob_name = f"website_demo/{int(time.time())}_{os.path.basename(img_path)}"
-                    blob = bucket.blob(blob_name)
-                    blob.upload_from_filename(img_path)
-                    
-                    public_url = f"https://storage.googleapis.com/boboandstella-instagram/{blob_name}"
-                    public_urls.append(public_url)
-        except Exception as e:
-            print(f"GCS Upload failed: {e}")
-            # Fallback: If we can't upload, we can't easily show them unless we serve static files.
-            # For now, return error or placeholder.
-            return jsonify({"status": "error", "message": "Failed to upload generated images to cloud."}), 500
-
-        return jsonify({
-            "status": "success",
-            "story": story,
-            "images": public_urls,
-            "logs": [
-                "✅ Gemini 2.5 Flash: Generated story context.",
-                f"✅ Imagen 3.0: Generated {len(image_paths)} photorealistic images.",
-                "✅ Google Cloud Storage: Images uploaded to public bucket.",
-                "⚠️ Instagram Graph API: Posting disabled for demo mode."
-            ]
-        })
-
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)}), 500
+    return jsonify({
+        "status": "error",
+        "message": "Demo mode is currently disabled in this deployment."
+    }), 503
 
 
 
